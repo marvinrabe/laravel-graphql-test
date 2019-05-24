@@ -6,7 +6,7 @@ Provides you a simple GraphQL testing trait. Works best with [Lighthouse](https:
 
 Install this library with composer
 
-    composer require marvinrabe/laravel-graphql-test
+    composer require --dev marvinrabe/laravel-graphql-test
 
 Add the trait to your `TestCase` class:
 
