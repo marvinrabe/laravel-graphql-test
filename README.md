@@ -1,5 +1,7 @@
-# laravel-graphql-test
-Provides you a simple GraphQL testing trait.
+# GraphQL Testing Helper for Laravel
+
+Provides you a simple GraphQL testing trait. Works best with [Lighthouse](https://lighthouse-php.com/).
+
 ## Installation
 
 Install this library with composer
@@ -20,6 +22,12 @@ abstract class TestCase extends BaseTestCase
     // ...
 }
 ```
+
+When your GraphQL endpoint is not `/graphql` you have to specify it manually:
+
+````php
+public $graphQLEndpoint = 'graphql';
+````
 
 ## Usage
 
