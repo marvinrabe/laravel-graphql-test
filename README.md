@@ -77,4 +77,4 @@ $this->mutation('accounts', ['id' => 123]);
 
 ## Limitations
 
-The `QueryBuilder` provided by this library is not safe for use in production code. It is designed for tests only and does not comply to the GraphQL specifications fully. Use it only for testing purposes! You have been warned.
+The `QueryBuilder` provided by this library is not safe for use in production code. It is designed for ease of use and does not comply to the GraphQL specifications fully. Use it only for testing purposes! You have been warned.
