@@ -1,6 +1,6 @@
 # GraphQL Testing Helper for Laravel
 
-Provides you a simple GraphQL testing trait. Works best with [Lighthouse](https://lighthouse-php.com/).
+Elegant GraphQL testing utilities for Laravel. Works with any GraphQL library. Especially with [Lighthouse](https://lighthouse-php.com/).
 
 ## Installation
 
@@ -33,10 +33,20 @@ public $graphQLEndpoint = 'graphql';
 
 ### Queries
 
-Full query:
+You can write queries like this:
 
 ```php
 $this->query('account', ['id' => 123], ['id']);
+```
+
+Note that this function returns an `\Illuminate\Foundation\Testing\TestResponse`. Therefore you might use any Laravel testing methods. For example:
+
+```php
+$this->query('account', ['id' => 123], ['id'])
+  ->assertSuccessful()
+  ->assertJsonFragment([
+    'id' => 123
+  ]);
 ```
 
 With nested resources:
@@ -51,7 +61,7 @@ Without a third argument it will be assumed that the second one is the selection
 $this->query('accounts', ['id']);
 ```
 
-When you pass the object name only you get the `GraphQLClient`:
+When you only pass the object name, you get the `GraphQLClient` instead of the Laravel `TestResponse`:
 
 ```php
 $this->query('accounts')->getGql();
@@ -59,7 +69,7 @@ $this->query('accounts')->getGql();
 
 ### Mutations
 
-Same as queries. But without the third argument the second one still has to be a GraphQL argument array: 
+Same as queries. But without the third argument, the second one still needs to be a GraphQL argument array: 
 
 ```php
 $this->mutation('accounts', ['id' => 123]); 
