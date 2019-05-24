@@ -1,0 +1,38 @@
+{
+  "name": "marvinrabe/laravel-graphql-test",
+  "description": "Provides you with a simple GraphQL testing trait.",
+  "keywords": [
+    "php",
+    "laravel",
+    "graphql",
+    "testing"
+  ],
+  "license": "MIT",
+  "support": {
+    "issues": "https://github.com/marvinrabe/laravel-graphql-test/issues",
+    "source": "https://github.com/marvinrabe/laravel-graphql-test"
+  },
+  "authors": [
+    {
+      "name": "Marvin Rabe",
+      "email": "marvin.rabe@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.0.0",
+    "illuminate/contracts": ">=5.5.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~7.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "MarvinRabe\\LaravelGraphQLTest\\": "src/"
+    }
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
