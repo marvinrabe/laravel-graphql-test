@@ -4,7 +4,6 @@ namespace MarvinRabe\LaravelGraphQLTest;
 
 trait TestGraphQL
 {
-    public $graphQLEndpoint = 'graphql';
 
     /**
      * Returns a TestGraphQL client. If no arguments and selection is provided, it will query the server directly.
@@ -17,7 +16,7 @@ trait TestGraphQL
     {
         $client = GraphQLClient::query($object, function ($query) {
             return $this->postJson(
-                $this->graphQLEndpoint,
+                $this->graphQLEndpoint ?? 'graphql',
                 [
                     'query' => $query,
                 ]
@@ -49,7 +48,7 @@ trait TestGraphQL
     {
         $client = GraphQLClient::mutation($object, function ($query) {
             return $this->postJson(
-                $this->graphQLEndpoint,
+                $this->graphQLEndpoint ?? 'graphql',
                 [
                     'query' => $query,
                 ]
