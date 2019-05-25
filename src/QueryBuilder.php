@@ -38,11 +38,11 @@ class QueryBuilder
 
     public function getGql(): string
     {
-        return $this->operation.' {'.implode(" ", [
-                $this->object,
-                $this->arguments(),
-                $this->selectionSet()
-            ]).'}';
+        return sprintf('%s { %s }', $this->operation, implode("", [
+            $this->object,
+            $this->arguments(),
+            $this->selectionSet()
+        ]));
     }
 
     protected function arguments()
@@ -57,12 +57,7 @@ class QueryBuilder
     protected function formatArgument($arguments)
     {
         array_walk($arguments, function (&$value, $key) {
-            if (is_array($value) && $this->is_assoc($value)) {
-                $result = "{".$this->formatArgument($value)."}";
-            } else {
-                $result = $this->formatScalar($value);
-            }
-            $value = "$key: $result";
+            $value = sprintf('%s: %s', $key, $this->formatValue($value));
         });
 
         return implode(', ', $arguments);
@@ -90,6 +85,23 @@ class QueryBuilder
         });
 
         return implode("\n", $selectionSet);
+    }
+
+    protected function formatValue($value)
+    {
+        if (is_array($value) && $this->is_assoc($value)) {
+            return "{".$this->formatArgument($value)."}";
+        } elseif (is_array($value)) {
+            return $this->formatArray($value);
+        }
+        return $this->formatScalar($value);
+    }
+
+    protected function formatArray(array $value)
+    {
+        return sprintf('[%s]', implode(', ', array_map(function ($value) {
+            return $this->formatValue($value);
+        }, $value)));
     }
 
     protected function formatScalar($scalar)
