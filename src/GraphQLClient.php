@@ -28,15 +28,15 @@ class GraphQLClient
         return new self(new QueryBuilder("mutation", $object), $fun);
     }
 
-    public function setArguments($arguments)
+    public function setArguments(array $arguments = null)
     {
-        $this->builder->setArguments($arguments);
+        $this->builder->setArguments($arguments ?? []);
         return $this;
     }
 
-    public function setSelectionSet($selectionSet)
+    public function setSelectionSet(array $selectionSet = null)
     {
-        $this->builder->setSelectionSet($selectionSet);
+        $this->builder->setSelectionSet($selectionSet ?? []);
         return $this;
     }
 

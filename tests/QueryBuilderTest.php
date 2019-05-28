@@ -7,6 +7,39 @@ class QueryBuilderTest extends TestCase
 {
 
     /** @test */
+    public function it_formats_empty_query()
+    {
+        $qb = new QueryBuilder('query', 'foo');
+        $qb->setArguments([]);
+        $qb->setSelectionSet([]);
+
+        $this->assertEquals("query { foo }", $qb->getGql());
+    }
+
+    /** @test */
+    public function it_formats_selection_set()
+    {
+        $qb = new QueryBuilder('query', 'acme');
+        $qb->setSelectionSet([
+            'foo',
+            'bar'
+        ]);
+
+        $this->assertEquals("query { acme{\nfoo\nbar\n} }", $qb->getGql());
+    }
+
+    /** @test */
+    public function it_formats_nested_selection_set()
+    {
+        $qb = new QueryBuilder('query', 'acme');
+        $qb->setSelectionSet([
+            'foo' => ['bar']
+        ]);
+
+        $this->assertEquals("query { acme{\nfoo {\nbar\n}\n} }", $qb->getGql());
+    }
+
+    /** @test */
     public function it_formats_string_arguments()
     {
         $qb = new QueryBuilder('mutation', 'foo');
