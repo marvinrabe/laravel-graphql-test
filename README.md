@@ -75,6 +75,19 @@ Same as queries. But without the third argument, the second one still needs to b
 $this->mutation('accounts', ['id' => 123]); 
 ```
 
+### Argument Order
+
+For simplicity you can find the correct argument order in the following table:
+
+|   Method |                         Arguments |       Returns |
+|---------:|----------------------------------:|--------------:|
+| query    | (object)                          | GraphQLClient |
+| query    | (object, selectionSet)            | TestResponse  |
+| query    | (object, arguments, selectionSet) | TestResponse  |
+| mutation | (object)                          | GraphQLClient |
+| mutation | (object, arguments)               | TestResponse  |
+| mutation | (object, arguments, selectionSet) | TestResponse  |
+
 ## Limitations
 
 The `QueryBuilder` provided by this library is not safe for use in production code. It is designed for ease of use and does not comply to the GraphQL specifications fully. Use it only for testing purposes! You have been warned.
