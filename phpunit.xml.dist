@@ -11,7 +11,7 @@
          stopOnFailure="false"
 >
   <testsuites>
-    <testsuite name="Laravel Settings Test Suite">
+    <testsuite name="Package Test Suite">
       <directory suffix=".php">./tests/</directory>
     </testsuite>
   </testsuites>
