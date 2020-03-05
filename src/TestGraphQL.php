@@ -55,7 +55,12 @@ trait TestGraphQL
             );
         });
 
-        if ($arguments != null || $selection != null) {
+        if ($arguments != null && $selection == null) {
+            $client->setSelectionSet($arguments);
+            return $client->getData();
+        }
+
+        if ($arguments != null && $selection != null) {
             $client->setArguments($arguments);
             $client->setSelectionSet($selection);
             return $client->getData();

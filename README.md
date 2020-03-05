@@ -69,9 +69,11 @@ $this->query('accounts')->getGql();
 
 ### Mutations
 
-Same as queries. But without the third argument, the second one still needs to be a GraphQL argument array: 
+Same as queries: 
 
 ```php
+$this->mutation('accounts')->getGql();
+$this->mutation('accounts', ['id']);
 $this->mutation('accounts', ['id' => 123]); 
 ```
 
@@ -85,7 +87,7 @@ For simplicity you can find the correct argument order in the following table:
 | query    | (object, selectionSet)            | TestResponse  |
 | query    | (object, arguments, selectionSet) | TestResponse  |
 | mutation | (object)                          | GraphQLClient |
-| mutation | (object, arguments)               | TestResponse  |
+| mutation | (object, selectionSet)            | TestResponse  |
 | mutation | (object, arguments, selectionSet) | TestResponse  |
 
 ## Limitations
