@@ -13,6 +13,12 @@ class QueryBuilder
 
     protected $selectionSet = [];
 
+    private $convertScalars = [
+        Scalars\NullType::class,
+        Scalars\BooleanType::class,
+        Scalars\StringType::class
+    ];
+
     /**
      * TestGraphQLBuilder constructor.
      * @param  string  $operation  Choose "query" or "mutation"
@@ -86,15 +92,15 @@ class QueryBuilder
 
     protected function formatScalar($scalar)
     {
-        if ($scalar === null) {
-            return 'null';
-        } elseif (is_string($scalar)) {
-            $escaped = str_replace('\\', '\\\\', $scalar);
-            $escaped = str_replace('"', '\"', $escaped);
-            return sprintf('"%s"', $escaped);
-        } elseif (is_bool($scalar)) {
-            return $scalar ? 'true' : 'false';
+        foreach ($this->convertScalars as $scalarType) {
+            /**
+             * @var Scalar $scalarType
+             */
+            if ($scalarType::match($scalar)) {
+                return new $scalarType($scalar);
+            }
         }
+
         return (string) $scalar;
     }
 
