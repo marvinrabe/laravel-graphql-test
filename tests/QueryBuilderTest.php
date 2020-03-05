@@ -1,13 +1,13 @@
 <?php
 
+namespace Test;
+
 use MarvinRabe\LaravelGraphQLTest\QueryBuilder;
 use PHPUnit\Framework\TestCase;
 
 class QueryBuilderTest extends TestCase
 {
-
-    /** @test */
-    public function it_formats_empty_query()
+    public function testFormatEmptyQuery()
     {
         $qb = new QueryBuilder('query', 'foo');
         $qb->setArguments([]);
@@ -16,8 +16,7 @@ class QueryBuilderTest extends TestCase
         $this->assertEquals("query { foo }", $qb->getGql());
     }
 
-    /** @test */
-    public function it_formats_selection_set()
+    public function testFormatSelectionSet()
     {
         $qb = new QueryBuilder('query', 'acme');
         $qb->setSelectionSet([
@@ -28,8 +27,7 @@ class QueryBuilderTest extends TestCase
         $this->assertEquals("query { acme{\nfoo\nbar\n} }", $qb->getGql());
     }
 
-    /** @test */
-    public function it_formats_nested_selection_set()
+    public function testFormatNestedQueries()
     {
         $qb = new QueryBuilder('query', 'acme');
         $qb->setSelectionSet([
@@ -39,8 +37,7 @@ class QueryBuilderTest extends TestCase
         $this->assertEquals("query { acme{\nfoo {\nbar\n}\n} }", $qb->getGql());
     }
 
-    /** @test */
-    public function it_formats_string_arguments()
+    public function testFormatStringAttributes()
     {
         $qb = new QueryBuilder('mutation', 'foo');
         $qb->setArguments([
@@ -50,8 +47,7 @@ class QueryBuilderTest extends TestCase
         $this->assertEquals('mutation { foo(bar: "Jonathan \"Johnny\" Johnson") }', $qb->getGql());
     }
 
-    /** @test */
-    public function it_formats_boolean_arguments()
+    public function testFormatsBoolean()
     {
         $qb = new QueryBuilder('mutation', 'foo');
         $qb->setArguments([
@@ -61,8 +57,7 @@ class QueryBuilderTest extends TestCase
         $this->assertEquals('mutation { foo(bar: true) }', $qb->getGql());
     }
 
-    /** @test */
-    public function it_formats_input_arguments()
+    public function testFormatsInputArguments()
     {
         $qb = new QueryBuilder('mutation', 'foo');
         $qb->setArguments([
@@ -72,8 +67,7 @@ class QueryBuilderTest extends TestCase
         $this->assertEquals('mutation { foo(bar: {a: 1, b: 2, c: 3}) }', $qb->getGql());
     }
 
-    /** @test */
-    public function it_formats_array_arguments()
+    public function testFormatsArrayArguments()
     {
         $qb = new QueryBuilder('mutation', 'foo');
         $qb->setArguments([
@@ -83,8 +77,7 @@ class QueryBuilderTest extends TestCase
         $this->assertEquals('mutation { foo(bar: [1, 2, 3]) }', $qb->getGql());
     }
 
-    /** @test */
-    public function it_formats_inputs_in_array_arguments()
+    public function testFormatInputsInArrayArgument()
     {
         $qb = new QueryBuilder('mutation', 'foo');
         $qb->setArguments([
@@ -93,5 +86,4 @@ class QueryBuilderTest extends TestCase
 
         $this->assertEquals('mutation { foo(bar: [{a: 1}, {a: 2}, {a: 3}]) }', $qb->getGql());
     }
-
 }
