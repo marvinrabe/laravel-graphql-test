@@ -3,10 +3,21 @@
 namespace Test;
 
 use MarvinRabe\LaravelGraphQLTest\GraphQLClient;
+use MarvinRabe\LaravelGraphQLTest\Scalars\EnumType;
 use PHPUnit\Framework\TestCase;
 
 class TestGraphQLTest extends TestCase
 {
+
+    public function testEnum()
+    {
+        $testCase = new FakeTestCase();
+
+        $result = $testCase->enum('payed');
+
+        $this->assertInstanceOf(EnumType::class, $result);
+        $this->assertEquals('payed', (string) $result);
+    }
 
     public function testQueryOneArgument()
     {

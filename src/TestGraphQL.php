@@ -2,10 +2,17 @@
 
 namespace MarvinRabe\LaravelGraphQLTest;
 
+use MarvinRabe\LaravelGraphQLTest\Scalars\EnumType;
+
 trait TestGraphQL
 {
 
     abstract public function postJson($uri, array $data = [], array $headers = []);
+
+    public function enum($value)
+    {
+        return new EnumType($value);
+    }
 
     /**
      * Returns a TestGraphQL client. If no arguments and selection is provided, it will query the server directly.
