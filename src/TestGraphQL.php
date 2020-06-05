@@ -58,12 +58,12 @@ trait TestGraphQL
 
     private function prepareClient(GraphQLClient $client, $arguments, $selection)
     {
-        if ($arguments != null && $selection == null) {
+        if (!is_null($arguments) && is_null($selection)) {
             $client->setSelectionSet($arguments);
             return $client->getData();
         }
 
-        if ($arguments != null && $selection != null) {
+        if (!is_null($arguments) && !is_null($selection)) {
             $client->setArguments($arguments);
             $client->setSelectionSet($selection);
             return $client->getData();
