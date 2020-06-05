@@ -77,4 +77,21 @@ class TestGraphQLTest extends TestCase
         $this->assertEquals(['query' => "mutation { createAccount(id: 123){\nid\n} }"], $testCase->data);
     }
 
+    public function testMutationWithEmptyArrays()
+    {
+        $testCase = new FakeTestCase();
+
+        $testCase->mutation('logout', [], []);
+
+        $this->assertEquals(['query' => "mutation { logout }"], $testCase->data);
+    }
+
+    public function testMutationWithOneEmptyArrayArguments()
+    {
+        $testCase = new FakeTestCase();
+
+        $testCase->mutation('logout', [], ['success']);
+
+        $this->assertEquals(['query' => "mutation { logout{\nsuccess\n} }"], $testCase->data);
+    }
 }
