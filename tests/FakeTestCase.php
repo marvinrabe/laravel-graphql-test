@@ -4,7 +4,6 @@ namespace MarvinRabe\LaravelGraphQLTest\Tests;
 
 class FakeTestCase
 {
-
     public $uri;
 
     public $data = [];

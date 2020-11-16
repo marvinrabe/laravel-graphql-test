@@ -7,7 +7,6 @@ use MarvinRabe\LaravelGraphQLTest\Scalars\EnumType;
 
 class TestGraphQLTest extends TestCase
 {
-
     public function testEnum()
     {
         $testCase = new FakeTestCase();

@@ -6,7 +6,6 @@ use MarvinRabe\LaravelGraphQLTest\Scalars\EnumType;
 
 trait TestGraphQL
 {
-
     abstract public function postJson($uri, array $data = [], array $headers = []);
 
     public function enum($value)
@@ -58,14 +57,16 @@ trait TestGraphQL
 
     private function prepareClient(GraphQLClient $client, $arguments, $selection)
     {
-        if (!is_null($arguments) && is_null($selection)) {
+        if (! is_null($arguments) && is_null($selection)) {
             $client->setSelectionSet($arguments);
+
             return $client->getData();
         }
 
-        if (!is_null($arguments) && !is_null($selection)) {
+        if (! is_null($arguments) && ! is_null($selection)) {
             $client->setArguments($arguments);
             $client->setSelectionSet($selection);
+
             return $client->getData();
         }
 

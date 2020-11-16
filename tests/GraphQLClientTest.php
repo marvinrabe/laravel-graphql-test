@@ -6,10 +6,10 @@ use MarvinRabe\LaravelGraphQLTest\GraphQLClient;
 
 class GraphQLClientTest extends TestCase
 {
-
     public function testConvertsNullToArray()
     {
-        $client = GraphQLClient::query('foo', function () {});
+        $client = GraphQLClient::query('foo', function () {
+        });
         $client->setArguments(null);
         $client->setSelectionSet(null);
 
@@ -18,7 +18,8 @@ class GraphQLClientTest extends TestCase
 
     public function testReturnsQuery()
     {
-        $client = GraphQLClient::query('foo', function () {});
+        $client = GraphQLClient::query('foo', function () {
+        });
         $client->setArguments(['id' => 123]);
         $client->setSelectionSet(['bar']);
 

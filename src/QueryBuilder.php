@@ -4,7 +4,6 @@ namespace MarvinRabe\LaravelGraphQLTest;
 
 class QueryBuilder
 {
-
     protected $operation;
 
     protected $object;
@@ -16,7 +15,7 @@ class QueryBuilder
     private $convertScalars = [
         Scalars\NullType::class,
         Scalars\BooleanType::class,
-        Scalars\StringType::class
+        Scalars\StringType::class,
     ];
 
     /**
@@ -33,12 +32,14 @@ class QueryBuilder
     public function setSelectionSet(array $selectionSet)
     {
         $this->selectionSet = $selectionSet;
+
         return $this;
     }
 
     public function setArguments(array $arguments)
     {
         $this->arguments = $arguments;
+
         return $this;
     }
 
@@ -47,7 +48,7 @@ class QueryBuilder
         return sprintf('%s { %s }', $this->operation, implode("", [
             $this->object,
             $this->arguments(),
-            $this->selectionSet()
+            $this->selectionSet(),
         ]));
     }
 
@@ -56,6 +57,7 @@ class QueryBuilder
         if (count($this->arguments) == 0) {
             return '';
         }
+
         return sprintf('(%s)', $this->formatArgument($this->arguments));
     }
 
@@ -75,6 +77,7 @@ class QueryBuilder
         } elseif (is_array($value)) {
             return $this->formatArray($value);
         }
+
         return $this->formatScalar($value);
     }
 
@@ -109,6 +112,7 @@ class QueryBuilder
         if (count($this->selectionSet) == 0) {
             return '';
         }
+
         return $this->formatSelectionSet($this->selectionSet);
     }
 
@@ -127,5 +131,4 @@ class QueryBuilder
     {
         return $this->getGql();
     }
-
 }

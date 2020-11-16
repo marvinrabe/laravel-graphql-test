@@ -20,7 +20,7 @@ class QueryBuilderTest extends TestCase
         $qb = new QueryBuilder('query', 'acme');
         $qb->setSelectionSet([
             'foo',
-            'bar'
+            'bar',
         ]);
 
         $this->assertEquals("query { acme{\nfoo\nbar\n} }", $qb->getGql());
@@ -30,7 +30,7 @@ class QueryBuilderTest extends TestCase
     {
         $qb = new QueryBuilder('query', 'acme');
         $qb->setSelectionSet([
-            'foo' => ['bar']
+            'foo' => ['bar'],
         ]);
 
         $this->assertEquals("query { acme{\nfoo {\nbar\n}\n} }", $qb->getGql());
@@ -40,7 +40,7 @@ class QueryBuilderTest extends TestCase
     {
         $qb = new QueryBuilder('mutation', 'foo');
         $qb->setArguments([
-            'bar' => 'Jonathan "Johnny" Johnson'
+            'bar' => 'Jonathan "Johnny" Johnson',
         ]);
 
         $this->assertEquals('mutation { foo(bar: "Jonathan \"Johnny\" Johnson") }', $qb->getGql());
@@ -50,7 +50,7 @@ class QueryBuilderTest extends TestCase
     {
         $qb = new QueryBuilder('mutation', 'foo');
         $qb->setArguments([
-            'bar' => true
+            'bar' => true,
         ]);
 
         $this->assertEquals('mutation { foo(bar: true) }', $qb->getGql());
@@ -60,7 +60,7 @@ class QueryBuilderTest extends TestCase
     {
         $qb = new QueryBuilder('mutation', 'foo');
         $qb->setArguments([
-            'bar' => ['a' => 1, 'b' => 2, 'c' => 3]
+            'bar' => ['a' => 1, 'b' => 2, 'c' => 3],
         ]);
 
         $this->assertEquals('mutation { foo(bar: {a: 1, b: 2, c: 3}) }', $qb->getGql());
@@ -70,7 +70,7 @@ class QueryBuilderTest extends TestCase
     {
         $qb = new QueryBuilder('mutation', 'foo');
         $qb->setArguments([
-            'bar' => [1, 2, 3]
+            'bar' => [1, 2, 3],
         ]);
 
         $this->assertEquals('mutation { foo(bar: [1, 2, 3]) }', $qb->getGql());
@@ -80,7 +80,7 @@ class QueryBuilderTest extends TestCase
     {
         $qb = new QueryBuilder('mutation', 'foo');
         $qb->setArguments([
-            'bar' => [['a' => 1], ['a' => 2], ['a' => 3]]
+            'bar' => [['a' => 1], ['a' => 2], ['a' => 3]],
         ]);
 
         $this->assertEquals('mutation { foo(bar: [{a: 1}, {a: 2}, {a: 3}]) }', $qb->getGql());
