@@ -1,9 +1,8 @@
 <?php
 
-namespace Test;
+namespace MarvinRabe\LaravelGraphQLTest\Tests;
 
 use MarvinRabe\LaravelGraphQLTest\GraphQLClient;
-use PHPUnit\Framework\TestCase;
 
 class GraphQLClientTest extends TestCase
 {

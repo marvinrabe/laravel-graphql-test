@@ -1,6 +1,6 @@
 <?php
 
-namespace Test;
+namespace MarvinRabe\LaravelGraphQLTest\Tests;
 
 class FakeTestCase
 {

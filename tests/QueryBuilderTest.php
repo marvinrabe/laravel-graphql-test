@@ -1,9 +1,8 @@
 <?php
 
-namespace Test;
+namespace MarvinRabe\LaravelGraphQLTest\Tests;
 
 use MarvinRabe\LaravelGraphQLTest\QueryBuilder;
-use PHPUnit\Framework\TestCase;
 
 class QueryBuilderTest extends TestCase
 {

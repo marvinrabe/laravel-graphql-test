@@ -1,10 +1,9 @@
 <?php
 
-namespace Test;
+namespace MarvinRabe\LaravelGraphQLTest\Tests;
 
 use MarvinRabe\LaravelGraphQLTest\GraphQLClient;
 use MarvinRabe\LaravelGraphQLTest\Scalars\EnumType;
-use PHPUnit\Framework\TestCase;
 
 class TestGraphQLTest extends TestCase
 {
