@@ -97,7 +97,7 @@ class QueryBuilder
     {
         foreach ($this->convertScalars as $scalarType) {
             /**
-             * @var Scalar $scalarType
+             * @var class-string<Scalar> $scalarType
              */
             if ($scalarType::match($scalar)) {
                 return new $scalarType($scalar);

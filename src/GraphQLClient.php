@@ -4,14 +4,17 @@ namespace MarvinRabe\LaravelGraphQLTest;
 
 class GraphQLClient
 {
-    protected $endpoint;
+    /**
+     * @var QueryBuilder
+     */
+    protected $builder;
 
     /**
-     * GraphQLClient constructor.
-     * @param  QueryBuilder  $builder
-     * @param $fun
+     * @var callable
      */
-    protected function __construct($builder, $fun)
+    protected $endpoint;
+
+    protected function __construct(QueryBuilder $builder, callable $fun)
     {
         $this->builder = $builder;
         $this->endpoint = $fun;
@@ -42,6 +45,7 @@ class GraphQLClient
     }
 
     /**
+     * @psalm-suppress UndefinedDocblockClass
      * @return \Illuminate\Foundation\Testing\TestResponse
      */
     public function getData()
@@ -49,11 +53,7 @@ class GraphQLClient
         return ($this->endpoint)($this->getGql());
     }
 
-    /**
-     * Returns GQL string.
-     * @return string
-     */
-    public function getGql()
+    public function getGql(): string
     {
         return $this->builder->getGql();
     }
