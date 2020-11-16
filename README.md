@@ -1,7 +1,7 @@
 # GraphQL Testing Helper for Laravel
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/marvinrabe/laravel-graphql-test.svg?style=flat-square)](https://packagist.org/packages/marvinrabe/laravel-graphql-test)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/marvinrabe/laravel-graphql-test/run-tests?label=tests)](https://github.com/marvinrabe/laravel-graphql-test/actions?query=workflow%3Arun-tests+branch%3Amaster)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/marvinrabe/laravel-graphql-test/Tests?label=tests)](https://github.com/marvinrabe/laravel-graphql-test/actions?query=workflow%3ATests+branch%3Amaster)
 [![Total Downloads](https://img.shields.io/packagist/dt/marvinrabe/laravel-graphql-test.svg?style=flat-square)](https://packagist.org/packages/marvinrabe/laravel-graphql-test)
 
 Elegant GraphQL testing utilities for Laravel. Works with any GraphQL library. Especially with [Lighthouse](https://lighthouse-php.com/).
