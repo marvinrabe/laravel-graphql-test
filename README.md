@@ -1,14 +1,20 @@
 # GraphQL Testing Helper for Laravel
 
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/marvinrabe/laravel-graphql-test.svg?style=flat-square)](https://packagist.org/packages/marvinrabe/laravel-graphql-test)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/marvinrabe/laravel-graphql-test/run-tests?label=tests)](https://github.com/marvinrabe/laravel-graphql-test/actions?query=workflow%3Arun-tests+branch%3Amaster)
+[![Total Downloads](https://img.shields.io/packagist/dt/marvinrabe/laravel-graphql-test.svg?style=flat-square)](https://packagist.org/packages/marvinrabe/laravel-graphql-test)
+
 Elegant GraphQL testing utilities for Laravel. Works with any GraphQL library. Especially with [Lighthouse](https://lighthouse-php.com/).
 
 ## Installation
 
-Install this library with composer
+You can install the package via composer:
 
-    composer require --dev marvinrabe/laravel-graphql-test
+```bash
+composer require --dev marvinrabe/laravel-graphql-test
+```
 
-Add the trait to your `TestCase` class:
+And then add the trait to your `TestCase` class:
 
 ```php
 <?php
@@ -90,8 +96,6 @@ For simplicity you can find the correct argument order in the following table:
 | mutation | (object, selectionSet)            | TestResponse  |
 | mutation | (object, arguments, selectionSet) | TestResponse  |
 
-## Special Cases
-
 ### Enums
 
 Because PHP has no built in Enum support. You have to use the provided enum helper:
@@ -106,6 +110,16 @@ Or create a `EnumType` manually:
 $this->query('accounts', ['status' => new \MarvinRabe\LaravelGraphQLTest\Scalars\EnumType('closed')], ['id']);
 ```
 
-## Limitations
+### Limitations
 
 The `QueryBuilder` provided by this library is not safe for use in production code. It is designed for ease of use and does not comply to the GraphQL specifications fully. Use it only for testing purposes! You have been warned.
+
+## Testing
+
+``` bash
+composer test
+```
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
