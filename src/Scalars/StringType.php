@@ -17,6 +17,7 @@ class StringType implements Scalar
     {
         $escaped = str_replace('\\', '\\\\', $this->value);
         $escaped = str_replace('"', '\"', $escaped);
+
         return sprintf('"%s"', $escaped);
     }
 

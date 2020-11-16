@@ -4,7 +4,6 @@ namespace MarvinRabe\LaravelGraphQLTest;
 
 class GraphQLClient
 {
-
     protected $endpoint;
 
     /**
@@ -31,12 +30,14 @@ class GraphQLClient
     public function setArguments(array $arguments = null)
     {
         $this->builder->setArguments($arguments ?? []);
+
         return $this;
     }
 
     public function setSelectionSet(array $selectionSet = null)
     {
         $this->builder->setSelectionSet($selectionSet ?? []);
+
         return $this;
     }
 
@@ -56,5 +57,4 @@ class GraphQLClient
     {
         return $this->builder->getGql();
     }
-
 }
