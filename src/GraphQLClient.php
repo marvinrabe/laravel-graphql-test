@@ -46,7 +46,7 @@ class GraphQLClient
 
     /**
      * @psalm-suppress UndefinedDocblockClass
-     * @return \Illuminate\Foundation\Testing\TestResponse
+     * @return \Illuminate\Testing\TestResponse
      */
     public function getData()
     {
