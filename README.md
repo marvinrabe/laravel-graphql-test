@@ -110,6 +110,25 @@ Or create a `EnumType` manually:
 $this->query('accounts', ['status' => new \MarvinRabe\LaravelGraphQLTest\Scalars\EnumType('closed')], ['id']);
 ```
 
+### Headers
+
+You can add additional HTTP headers by using `withHeader` or `withHeaders` methods provided by Laravel. For example:
+
+    $this->withHeaders(["Authorization" => "Bearer TOKEN"])->query('accounts', ['id']);
+
+If you always provide the same headers, you could define them on your TestCase.
+
+```php
+class AccountsTest extends TestCase
+{
+    protected $defaultHeaders = [
+        "Authorization" => "Bearer TOKEN",
+    ];
+    
+    // ...
+}
+```
+
 ### Limitations
 
 The `QueryBuilder` provided by this library is not safe for use in production code. It is designed for ease of use and does not comply to the GraphQL specifications fully. Use it only for testing purposes! You have been warned.
